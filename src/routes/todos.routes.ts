@@ -1,6 +1,7 @@
 import { Router } from "express";
 import type { Request, Response } from "express";
 import type { Todo } from "../types/todo.types";
+import { Status } from "../types/status.enum";
 
 const router = Router();
 
@@ -10,7 +11,7 @@ let todos: Todo[] = [
     id: 1,
     text: "nour",
     createdAt: new Date(),
-    completed: false,
+    status: Status.created,
   },
 ];
 
@@ -23,7 +24,6 @@ router.get("/", (req: Request, res: Response) => {
 router.get("/:id", (req: Request, res: Response) => {
   let id = parseInt(req.params.id!);
   let todo = todos.find((todo) => todo.id === id);
-  console.log(todo);
   if (todo) {
     res.status(200).json(todo);
   } else {

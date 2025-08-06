@@ -1,11 +1,11 @@
 import express from "express";
-import todosRoutes from "./routes/todos.routes";
+import apiRouter from "./routes/api.routes";
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use("/api/todos", todosRoutes);
+app.use("/api", apiRouter);
 
 app.get("/", (req, res) => res.status(200).send("Welcome to Todo API"));
 
