@@ -14,10 +14,12 @@ let todos: Todo[] = [
   },
 ];
 
+// GET: get all todos
 router.get("/", (req: Request, res: Response) => {
   res.status(200).json(todos);
 });
 
+// GET: get specific to do by id
 router.get("/:id", (req: Request, res: Response) => {
   let id = parseInt(req.params.id!);
   let todo = todos.find((todo) => todo.id === id);
