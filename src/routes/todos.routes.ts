@@ -6,14 +6,7 @@ import { Status } from "../types/status.enum";
 const router = Router();
 
 // managing todos in memory
-let todos: Todo[] = [
-  {
-    id: 1,
-    text: "nour",
-    createdAt: new Date(),
-    status: Status.created,
-  },
-];
+let todos: Todo[] = [];
 
 // GET: get all todos
 router.get("/", (req: Request, res: Response) => {
