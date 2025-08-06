@@ -7,6 +7,7 @@ const router = Router();
 
 // managing todos in memory
 let todos: Todo[] = [];
+let counter = 1;
 
 // GET: get all todos
 router.get("/", (req: Request, res: Response) => {
@@ -35,7 +36,7 @@ router.post("/", (req: Request, res: Response) => {
     id: counter++,
     text: text,
     createdAt: new Date(),
-    completed: false,
+    status: Status.created,
   };
   todos.push(newTodo);
   res.status(201).json(newTodo);
