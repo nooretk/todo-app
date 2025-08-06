@@ -24,4 +24,21 @@ router.get("/:id", (req: Request, res: Response) => {
   }
 });
 
+// POST: create a new todo
+router.post("/", (req: Request, res: Response) => {
+  const { text } = req.body;
+  if (!text) {
+    return res.status(400).send("Bad request");
+  }
+
+  const newTodo: Todo = {
+    id: counter++,
+    text: text,
+    createdAt: new Date(),
+    completed: false,
+  };
+  todos.push(newTodo);
+  res.status(201).json(newTodo);
+});
+
 export default router;
