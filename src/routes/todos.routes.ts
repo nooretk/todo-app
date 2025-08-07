@@ -42,4 +42,20 @@ router.post("/", (req: Request, res: Response) => {
   res.status(201).json(newTodo);
 });
 
+// PATCH: edit todo status
+router.patch("/:id", (req: Request, res: Response) => {
+  let id = parseInt(req.params.id!);
+  let todo = todos.find((todo: Todo) => todo.id === id);
+
+  if (!todo) return res.status(404).send(`Todo with id: ${id} is not found.`);
+
+  const { status } = req.body;
+
+  if (!Object.values(Status).includes(status))
+    return res.status(400).send(`Invalid status: ${status}`);
+
+  todo.status = status;
+  res.status(200).json(todo);
+});
+
 export default router;
