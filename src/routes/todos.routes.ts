@@ -60,7 +60,7 @@ router.patch("/:id", (req: Request, res: Response) => {
 
 // DELETE: delete a todo
 router.delete("/:id", (req: Request, res: Response) => {
-  let id = parseInt(req.params.id!);
+  const id = parseInt(req.params.id!);
 
   const index = todos.findIndex((todo: Todo) => todo.id === id);
 
