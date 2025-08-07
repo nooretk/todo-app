@@ -44,8 +44,8 @@ router.post("/", (req: Request, res: Response) => {
 
 // PATCH: edit todo status
 router.patch("/:id", (req: Request, res: Response) => {
-  let id = parseInt(req.params.id!);
-  let todo = todos.find((todo: Todo) => todo.id === id);
+  const id = parseInt(req.params.id!);
+  const todo = todos.find((todo: Todo) => todo.id === id);
 
   if (!todo) return res.status(404).send(`Todo with id: ${id} is not found.`);
 
