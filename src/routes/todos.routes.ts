@@ -58,4 +58,18 @@ router.patch("/:id", (req: Request, res: Response) => {
   res.status(200).json(todo);
 });
 
+// DELETE: delete a todo
+router.delete("/:id", (req: Request, res: Response) => {
+  let id = parseInt(req.params.id!);
+
+  const index = todos.findIndex((todo: Todo) => todo.id === id);
+
+  if (index === -1)
+    return res.status(404).send(`Todo with id: ${id} is not found.`);
+
+  todos.splice(index, 1);
+
+  res.status(200).send(`Todo with id ${id} deleted successfully.`);
+});
+
 export default router;
